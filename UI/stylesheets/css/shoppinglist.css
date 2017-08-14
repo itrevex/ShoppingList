@@ -36,6 +36,10 @@ body{
     height: 150px;
     width: 150px;
 }
+#shoppinglist_logo_small{
+    height: 100px;
+    width: 100px; 
+}
 
 #registerUserTitle{
     margin-left: 5px;
