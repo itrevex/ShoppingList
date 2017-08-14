@@ -27,9 +27,12 @@ body{
 #login_title{
     margin-left: 5px;
     margin-right: 5px;
-    color: #22679F;
+    color: #FFF;
     margin-top: 5px;
     font-size: 6em;
+}
+#login_here{
+    color: #FFF;
 }
 
 #shoppinglist_logo{
