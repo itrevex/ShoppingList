@@ -41,15 +41,23 @@ class ShoppingListTest(unittest.TestCase):
         """Tests if return values for read item is correct"""
         self.shopping_list_1.add_item('oranges',10,3)
         oranges = self.shopping_list_1.read_item('oranges')
-        self.assertListEqual(oranges,['oranges',10,60], msg='read_item method invalid')
-        
-    def test_shopping_list_total_amount(self):
+        self.assertListEqual(oranges,['oranges',10,30], msg='read_item method invalid')
+
+    def test_shopping_list_total_amount_on_add_item(self):
 
         """ Test total amount in shopping list after adding items"""
 
         self.shopping_list_1.add_item('oranges',20,2)
         self.shopping_list_1.add_item('mangoes',5,1)
         self.assertEqual(self.shopping_list_1.total_amount,45,msg='Invalid Total Amount')
+
+    def test_shopping_list_total_amount_on_remove_item(self):
+        """ Test total amount in shopping list after removing items"""
+
+        self.shopping_list_1.add_item('oranges',20,2)
+        self.shopping_list_1.add_item('mangoes',5,1)
+        self.shopping_list_1.remove_item('mangoes')
+        self.assertEqual(self.shopping_list_1.total_amount,40,msg='Invalid Total Amount')
 
 
 
