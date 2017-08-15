@@ -1,3 +1,7 @@
 {
-  "Scripts/test_shopping_list.py": true
+  "Scripts/test_shopping_list.py::ShoppingListTest": true,
+  "Scripts/test_shopping_list.py::ShoppingListTest::test_shopping_list_add_item": true,
+  "Scripts/test_shopping_list.py::ShoppingListTest::test_shopping_list_read_item": true,
+  "Scripts/test_shopping_list.py::ShoppingListTest::test_shopping_list_remove_item": true,
+  "Scripts/test_shopping_list.py::ShoppingListTest::test_shopping_list_total_amount": true
 }
