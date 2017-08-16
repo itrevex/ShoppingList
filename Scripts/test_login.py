@@ -48,7 +48,7 @@ class LoginTest(unittest.TestCase):
         than six characters long
         """
         with self.assertRaises(InValidPasswordExcpetion):
-            self.isaac_ssekamattte.password(8)
+            self.invalid_password.login()
 
     def test_email_validity(self):
         """
