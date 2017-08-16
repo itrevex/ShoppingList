@@ -22,17 +22,20 @@ class LogIn():
     def __init__(self,email,password):
         self.email = email
         self.password = password
-        self.online_data = 'steve@steve.com','qwerty'
-    
-    
+        self.online_data = {("steve@steve.com","qwerty"),("isaac@isaac.com","123456i")}
+            
+    #change of login logic
+    """
     def check_email(self):
-        """
+        \"""
         Checks if email matches any emails from server
-        """
+        \"""
         return self.email == self.online_data[0]
 
     def check_password(self):
-        """
+        \"""
         checks if password matches passwords on
-        """
+        \"""
         return self.password == self.online_data[1]
+    """
+
