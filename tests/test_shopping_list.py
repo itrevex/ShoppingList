@@ -30,12 +30,19 @@ class ShoppingListTest(unittest.TestCase):
         self.shopping_list_1.add_item('pineapples',20,5)
         self.assertDictEqual(self.shopping_list_1.items, {'pineapples':[20,5]},msg='add_item method inaccurate')
 
-    def test_shopping_list_remove_item(self):
+    def test_shopping_list_remove_part_items(self):
         """ Test remove_item method"""
         self.shopping_list_1.add_item('apples',10,3)
         self.shopping_list_1.add_item('bananas',4,2)
-        self.shopping_list_1.remove_item('bananas')
-        self.assertDictEqual(self.shopping_list_1.items,{'apples':[10,3]},msg='remove_item method inaccurate')
+        self.shopping_list_1.remove_item('apples',2)
+        self.assertDictEqual(self.shopping_list_1.items,{'apples':[8,3],'bananas':[4,2]},msg='remove_item method inaccurate')
+    
+    def test_shopping_list_remove_all_items(self):
+        """ Test remove_item method"""
+        self.shopping_list_1.add_item('apples',10,3)
+        self.shopping_list_1.add_item('bananas',4,2)
+        self.shopping_list_1.remove_item('apples',10)
+        self.assertDictEqual(self.shopping_list_1.items,{'bananas':[4,2]},msg='remove_item method inaccurate')
 
     def test_shopping_list_read_item(self):
         """Tests if return values for read item is correct"""
@@ -56,8 +63,8 @@ class ShoppingListTest(unittest.TestCase):
 
         self.shopping_list_1.add_item('oranges',20,2)
         self.shopping_list_1.add_item('mangoes',5,1)
-        self.shopping_list_1.remove_item('mangoes')
-        self.assertEqual(self.shopping_list_1.total_amount,40,msg='Invalid Total Amount')
+        self.shopping_list_1.remove_item('mangoes',4)
+        self.assertEqual(self.shopping_list_1.total_amount,41,msg='Invalid Total Amount')
 
     def test_shopping_list_remove_item_expection(self):
         """
@@ -65,7 +72,7 @@ class ShoppingListTest(unittest.TestCase):
         that does not exist
         """
         with self.assertRaises(ItemNotInListException):
-            self.shopping_list_1.remove_item('mangoes')
+            self.shopping_list_1.remove_item('mangoes',10)
 
     def test_add_item_item_name_data_type(self):
         """
@@ -97,7 +104,7 @@ class ShoppingListTest(unittest.TestCase):
          or an empty str on remove_item
         """
         with self.assertRaises(TypeError):
-            self.shopping_list_1.remove_item("")
+            self.shopping_list_1.remove_item("",5)
     
     def test_read_item_item_name_data_type(self):
         """

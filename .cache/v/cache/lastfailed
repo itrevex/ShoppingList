@@ -1,4 +1,0 @@
-{
-  "Scripts/test_login.py::LoginTest::test_check_email": true,
-  "Scripts/test_login.py::LoginTest::test_check_password": true
-}
