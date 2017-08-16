@@ -2,7 +2,18 @@
 """
 Login class for housing login methods
 """
+class InValidEmailExcpetion(Exception):
+    """
+    Email exception class
+    """
+    pass
 
+class InValidPasswordExcpetion(Exception):
+    """
+    password exception class
+    """
+    pass
+    
 class LogIn():
     """
     Shopping List login class
