@@ -24,18 +24,11 @@ class LogIn():
         self.password = password
         self.online_data = {("steve@steve.com","qwerty"),("isaac@isaac.com","123456i")}
             
-    #change of login logic
-    """
-    def check_email(self):
-        \"""
-        Checks if email matches any emails from server
-        \"""
-        return self.email == self.online_data[0]
-
-    def check_password(self):
-        \"""
-        checks if password matches passwords on
-        \"""
-        return self.password == self.online_data[1]
-    """
+    def login(self):
+        """
+        checks if password and email match server values
+        Allows or declines user to access page
+        """
+        email_password = self.email,self.password
+        return email_password in self.online_data
 
