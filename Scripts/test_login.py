@@ -37,9 +37,13 @@ class LoginTest(unittest.TestCase):
         """
         test constant email kept in tupple mimicing server sent login email
         """
-        password = "qwerty"
-        self.assertEqual(self.isaac_ssekamattte.online_data[1],password,msg="Incorrect Value for password in Tupple")
-    
+        local_email_password = ("steve@steve.com","qwerty")
+        server_email_password = self.isaac_ssekamattte.online_data.pop(0)
+        self.assertEqual(local_email_password,server_email_password,
+        msg="Incorrect Value for password in Tupple")
+
+    #change of logic, first comment this block this out
+    """"
     def test_check_email(self):
         """
         Test method for comparing emails
@@ -51,7 +55,7 @@ class LoginTest(unittest.TestCase):
         Test method for comparing passwords
         """
         self.assertTrue(self.steve.checkpasword(self.steve.password),msg="Check Email Method Inaccurate")
-
+    """"
     def test_check_login(self):
         """
         Test method for login on success
