@@ -35,6 +35,9 @@ class LogIn():
         if not self.validate_email():
             raise InValidEmailExcpetion('User Email Invalid')
 
+        if not self.validate_password():
+            raise InValidPasswordExcpetion('Password must be atleast six \'6\' characters long')
+
         email_password = self.email,self.password
         return email_password in self.online_data
 
