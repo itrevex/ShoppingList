@@ -63,8 +63,8 @@ class ShoppingListTest(unittest.TestCase):
 
         self.shopping_list_1.add_item('oranges',20,2)
         self.shopping_list_1.add_item('mangoes',5,1)
-        self.shopping_list_1.remove_item('mangoes')
-        self.assertEqual(self.shopping_list_1.total_amount,40,msg='Invalid Total Amount')
+        self.shopping_list_1.remove_item('mangoes',4)
+        self.assertEqual(self.shopping_list_1.total_amount,41,msg='Invalid Total Amount')
 
     def test_shopping_list_remove_item_expection(self):
         """
@@ -72,7 +72,7 @@ class ShoppingListTest(unittest.TestCase):
         that does not exist
         """
         with self.assertRaises(ItemNotInListException):
-            self.shopping_list_1.remove_item('mangoes')
+            self.shopping_list_1.remove_item('mangoes',10)
 
     def test_add_item_item_name_data_type(self):
         """
@@ -104,7 +104,7 @@ class ShoppingListTest(unittest.TestCase):
          or an empty str on remove_item
         """
         with self.assertRaises(TypeError):
-            self.shopping_list_1.remove_item("")
+            self.shopping_list_1.remove_item("",5)
     
     def test_read_item_item_name_data_type(self):
         """

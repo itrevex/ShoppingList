@@ -45,12 +45,12 @@ class ShoppingList():
         self.items[item_name] = [number_of_items,cost_per_item]
         self.total_amount += number_of_items*cost_per_item
     
-    def remove_item(self,item_name, number_of_items):
+    def remove_item(self,item_name,number_items_on_item):
         """
         Remove item from shopping list
         remove item `item_name` from the items __dict__
         updates the total_amount
-        remove the number_of_items specified from the total items pool
+        remove the number_items_on_item specified from the total items pool
         """
         if not isinstance(item_name, str) or not item_name:
             raise TypeError("Item Name Should Be A Word")
@@ -61,11 +61,11 @@ class ShoppingList():
         if item_name not in self.items:
             raise ItemNotInListException('Item You Are Trying To Remove Is Not In Shopping List')
         
-        self.total_amount -= self.items[item_name][1]*number_of_items
-        if number_of_items >= self.items[item_name][0]:
+        self.total_amount -= self.items[item_name][1]*number_items_on_item
+        if number_items_on_item >= self.items[item_name][0]:
             self.items.pop(item_name,None)
         else:
-            left_items = self.items[item_name][0] - number_of_items
+            left_items = self.items[item_name][0] - number_items_on_item
             cost_of_item = self.items[item_name][1]
             self.items[item_name] = [left_items,cost_of_item]
         
