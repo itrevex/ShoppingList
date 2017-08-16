@@ -26,42 +26,19 @@ class LoginTest(unittest.TestCase):
         """
         self.assertEqual(self.isaac_ssekamattte.password,"123456i","__init__ method inaccurate")
 
-    def test_server_sent_email(self):
+    def test_server_sent_email_password_pairs(self):
         """
         test constant email kept in tupple mimicing server sent login email
         """
-        email = "steve@steve.com"
-        self.assertEqual(self.isaac_ssekamattte.online_data[0],email,msg="Incorrect Value for Email in Tupple")
+        server_data = {("steve@steve.com","qwerty"),("isaac@isaac.com","123456i")}
+        self.assertEqual(self.isaac_ssekamattte.online_data,server_data,msg="Incorrect Value for Email in Tupple")
        
-    def test_server_sent_password(self):
-        """
-        test constant email kept in tupple mimicing server sent login email
-        """
-        local_email_password = ("steve@steve.com","qwerty")
-        server_email_password = self.isaac_ssekamattte.online_data.pop(0)
-        self.assertEqual(local_email_password,server_email_password,
-        msg="Incorrect Value for password in Tupple")
 
-    #change of logic, first comment this block this out
-    """"
-    def test_check_email(self):
-        """
-        Test method for comparing emails
-        """
-        self.assertTrue(self.steve.checkemail(self.steve.email),msg="Check Email Method Inaccurate")
-
-    def test_check_password(self):
-        """
-        Test method for comparing passwords
-        """
-        self.assertTrue(self.steve.checkpasword(self.steve.password),msg="Check Email Method Inaccurate")
-    """"
     def test_check_login(self):
         """
         Test method for login on success
         """
-        self.assertTrue(self.steve.login(self.steve.email,self.steve.password),
-        msg="Check Email Method Inaccurate")
+        self.assertTrue(self.steve.login(),msg="Check Email Method Inaccurate")
 
     def test_password_validity(self):
         """
