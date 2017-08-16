@@ -30,12 +30,19 @@ class ShoppingListTest(unittest.TestCase):
         self.shopping_list_1.add_item('pineapples',20,5)
         self.assertDictEqual(self.shopping_list_1.items, {'pineapples':[20,5]},msg='add_item method inaccurate')
 
-    def test_shopping_list_remove_item(self):
+    def test_shopping_list_remove_part_items(self):
         """ Test remove_item method"""
         self.shopping_list_1.add_item('apples',10,3)
         self.shopping_list_1.add_item('bananas',4,2)
-        self.shopping_list_1.remove_item('bananas')
-        self.assertDictEqual(self.shopping_list_1.items,{'apples':[10,3]},msg='remove_item method inaccurate')
+        self.shopping_list_1.remove_item('apples',2)
+        self.assertDictEqual(self.shopping_list_1.items,{'apples':[8,3],'bananas':[4,2]},msg='remove_item method inaccurate')
+    
+    def test_shopping_list_remove_all_items(self):
+        """ Test remove_item method"""
+        self.shopping_list_1.add_item('apples',10,3)
+        self.shopping_list_1.add_item('bananas',4,2)
+        self.shopping_list_1.remove_item('apples',10)
+        self.assertDictEqual(self.shopping_list_1.items,{'bananas':[4,2]},msg='remove_item method inaccurate')
 
     def test_shopping_list_read_item(self):
         """Tests if return values for read item is correct"""

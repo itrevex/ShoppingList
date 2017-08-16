@@ -1,1 +1,4 @@
-{}
+{
+  "Scripts/test_shopping_list.py::ShoppingListTest::test_shopping_list_remove_all_items": true,
+  "Scripts/test_shopping_list.py::ShoppingListTest::test_shopping_list_remove_part_items": true
+}
