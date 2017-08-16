@@ -64,40 +64,48 @@ class ShoppingListTest(unittest.TestCase):
         Test to see if exception is raised if user tries to remove item from shopping list 
         that does not exist
         """
-        with assertRaises(ItemNotInListException):
+        with self.assertRaises(ItemNotInListException):
             self.shopping_list_1.remove_item('mangoes')
 
-    def test_add_item_item_name_data_type():
+    def test_add_item_item_name_data_type(self):
         """
         tests if TypeError exception is raised if item_name is not str or is an 
         empty string on add_item
         """
-        with assertRaises(TypeError):
+        with self.assertRaises(TypeError):
             self.shopping_list_1.add_item(10,10,10)
     
-    def test_add_item_number_of_items_data_type():
+    def test_add_item_number_of_items_data_type(self):
         """
         tests if TypeError exception is raised if number_of_items is not int
-        on add_item
+        or is zero on add_item
         """
-        with assertRaises(TypeError):
+        with self.assertRaises(TypeError):
             self.shopping_list_1.add_item('apples','brash',10)
     
-    def test_add_item_item_amount_data_type():
+    def test_add_item_item_amount_data_type(self):
         """
         tests if TypeError exception is raised if item_amount is not int
-        on add_item
+        or is zero on add_item
         """
-        with assertRaises(TypeError):
+        with self.assertRaises(TypeError):
             self.shopping_list_1.add_item('oranges',10,"")
     
-    def test_remove_item_item_amount_data_type():
+    def test_remove_item_item_name_data_type(self):
         """
         tests if TypeError exception is raised if item_amount is not str
          or an empty str on remove_item
         """
-        with assertRaises(TypeError):
+        with self.assertRaises(TypeError):
             self.shopping_list_1.remove_item("")
+    
+    def test_read_item_item_name_data_type(self):
+        """
+        tests if TypeError exception is raised if item_name is not str
+         or an empty str on remove_item
+        """
+        with self.assertRaises(TypeError):
+            self.shopping_list_1.read_item(" ")
 
     
         
