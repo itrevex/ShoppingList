@@ -4,7 +4,7 @@ Class for unittesting ShoppingList Class;
 Requirement for doing TDD
 """
 import unittest
-from ..app.shopping_list import ShoppingList, ItemNotInListException
+from shopping_list import ShoppingList, ItemNotInListException
 
 class ShoppingListTest(unittest.TestCase):
     """

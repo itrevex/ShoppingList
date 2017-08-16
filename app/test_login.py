@@ -1,8 +1,10 @@
-import unittest
-from ..app.login import LogIn, InValidEmailExcpetion, InValidPasswordExcpetion
+
 """
 Unittest class for testing login class instance
 """
+
+import unittest
+from login import LogIn, InValidEmailExcpetion, InValidPasswordExcpetion
 
 class LoginTest(unittest.TestCase):
     
