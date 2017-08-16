@@ -40,7 +40,15 @@ class LogIn():
 
     def validate_email(self):
         """
-        Method to validate user email
+        Method to validate user email. Email should at least an '@','.' character
+        and also be greater 4 characters long
         """
         email = str(self.email)
         return '@' in email and '.' in email and len(email) > 4
+
+    def validate_password(self):
+        """
+        Method to validate user password. Password should be atleast 6 characters long
+        """
+        password = str(self.password)
+        return len(password) >= 6
