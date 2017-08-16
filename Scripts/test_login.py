@@ -13,6 +13,8 @@ class LoginTest(unittest.TestCase):
     def setUp(self):
         self.isaac_ssekamattte = LogIn("isaac@isaac.com","123456i")
         self.steve = LogIn("steve@steve.com","qwerty")
+        self.invalid_email= LogIn("6rrrrer","123421")
+        self.invalid_password= LogIn("steve@steve.com","133")
     
     def test_constructor_email(self):
         """
@@ -54,4 +56,4 @@ class LoginTest(unittest.TestCase):
         string with @ and a `.` in it >= 4 characters
         """
         with self.assertRaises(InValidEmailExcpetion):
-            self.isaac_ssekamattte.password('dsdsaasd8')
+           self.invalid_email.login()
