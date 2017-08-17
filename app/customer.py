@@ -77,7 +77,7 @@ class Customer():
         """
         self.shopping_lists[name_shopping_list] = update_list
 
-    def show_items_in_shopping_list(self,name_shopping_list):
+    def show_shopping_list(self,name_shopping_list):
         """
         returns list of values of shopping list to display
         """

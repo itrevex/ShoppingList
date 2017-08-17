@@ -97,7 +97,7 @@ class LoginTest(unittest.TestCase):
         grosseries = {"oranges":[5,200],"mangoes":[6,1000]}
         self.steve.create_shopping_list("grosseries",grosseries)
         updated_grosseries = {"oranges":[5,200],"mangoes":[6,1000],"pees":[5,4000]}
-        self.steve.test_update_shopping_list("grosseries",updated_grosseries)
+        self.steve.update_shopping_list("grosseries",updated_grosseries)
         self.assertEqual(self.steve.shopping_lists["grosseries"],updated_grosseries,
         msg="update_shopping_list_method_inaccurate")
 
