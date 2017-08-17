@@ -3,6 +3,7 @@ Script used for rendering views onto the browser
 """
 from flask import Flask, request, render_template, redirect, url_for
 from customer import Customer, InValidEmailExcpetion, InValidPasswordExcpetion
+from shopping_list import ShoppingList
 
 app = Flask(__name__)
 
@@ -28,7 +29,7 @@ def login(login_fail=None):
                     login_fail = "Wrong Email Or Password"
                     return redirect(url_for('home', user_name=customer.email))
 
-            except (Exception) as exception:
+            except (Exception,InValidEmailExcpetion,InValidPasswordExcpetion) as exception:
                 customer = Customer(request.form['email'],request.form['password'])
                 login_fail = str(exception)
 
