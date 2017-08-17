@@ -8,8 +8,9 @@
         <!-- Set the page to the width of the device and set the zoon level -->
         <meta name="viewport" content="width = device-width, initial-scale = 1">
         <!-- Bootstrap -->
-        <link rel="stylesheet" type="text/css" href="stylesheets/css/3.5.5/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="stylesheets/css/shoppinglist.css">
+
+        <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename = "stylesheets/css/3.5.5/bootstrap.css")}}">
+        <link rel="stylesheet" type="text/css" href= "{{ url_for ('static', filename="stylesheets/css/shoppinglist.css" )}}">
  
     </head>
 
@@ -19,25 +20,33 @@
                 <p id="login_text" >
                     <p align="center" id="login_title">Welcome To Shopping List App</p>
                     <p align="center">
-                        <h4>{{name}}</h4>
-                        <h6 align="center" id="login_here">LogIn Here</h6>
+                        {% if login_fail %}
+                            <h6 align="center" id="login_here">{{ login_fail }}</h6>
+                        {% else %}
+                            <h6 align="center" id="login_here">LogIn Here</h6>
+                        {% endif %}
                     </p>
                     
                 </p><br>
-                
-                <input type="text" class="form-control" placeholder="Email" id="login_email"/><br>
-                <input type="text" class="form-control" placeholder="Password" id="loginPassword"/><br>
+                <form action="" method="post">
+                <input type="text" class="form-control" placeholder="Email" id="login_email"
+                   name="{{ request.form.email }}"/><br>
+                <input type="password" class="form-control" placeholder="Password" id="loginPassword"
+                   name="{{ request.form.password }}"/><br>
             
                 <p align = "center">
-                    <a href="#" class="btn btn-default btn-lg" id="loginButton">Log In</a>
-                    <a href="#" class="btn btn-success btn-lg" id="signUpButton">Sign Up</a>
+                    <input class="btn btn-default btn-lg" id="loginButton" type="submit"
+                    value="Log In" name="login"></input>
+                    <input class="btn btn-success btn-lg" id="loginButton" type="submit"
+                    value="Sign Up" name="signup"></input>
                 </p>
+                </form>
             
             </div>
         </div>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://code.jquery.com/jquery.js"></script>
         <!-- Include all compiled plugins (below), or include individualfiles as needed -->
-        <script src="js/bootstrap.min.js"></script>
+        <script src= "{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
     </body>
 </html>
