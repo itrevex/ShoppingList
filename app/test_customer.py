@@ -30,7 +30,7 @@ class LoginTest(unittest.TestCase):
         """
         self.assertEqual(self.isaac_ssekamattte.password,"123456i","__init__ method inaccurate")
 
-    def test_server_sent_email_password_pairs(self):
+    def test_customer_email_password_pairs(self):
         """
         test constant email kept in tupple mimicing server sent login email
         """
@@ -42,7 +42,13 @@ class LoginTest(unittest.TestCase):
         """
         Test method for login on success
         """
-        self.assertTrue(self.steve.login(),msg="Check Email Method Inaccurate")
+        self.steve.login()
+        self.assertTrue(self.steve.login_status,msg="Check Email Method Inaccurate")
+    
+    def test_log_out(self):
+        """ Test Customer Log Out"""
+        self.steve.logout()
+        self.assertFalse(self.steve.login_status,msg="Log out Method Incacurate")
 
     def test_password_validity(self):
         """
@@ -59,3 +65,10 @@ class LoginTest(unittest.TestCase):
         """
         with self.assertRaises(InValidEmailExcpetion):
            self.invalid_email.login()
+
+    def test_create_shopping_list(self):
+        """Check validity of create shopping list method"""
+        shopping_list_1 = ShoppingList()
+        self.steve.create_shopping_list(shopping_list_1)
+        self.assertEqual(self.steve.shopping_list,shopping_list_1,msg="Create Shopping List Method Incorrect")
+

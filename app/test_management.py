@@ -15,7 +15,7 @@ class ManagementTest(unittest.TestCase):
     def test_start_number_of_customers(self):
         """Test Starting Number of Customers"""
 
-        self.assertEqual(self.management.customers,{},msg="Starting Number of Customers Wrong")
+        self.assertFalse(self.management.customers,msg="Starting Number of Customers Wrong")
     
     def test_add_customer(self):
         """test add_customer_method"""
@@ -30,4 +30,4 @@ class ManagementTest(unittest.TestCase):
         customer=Customer("email","password")
         self.management.add_customer(customer)
         self.management.remove_customer(customer)
-        self.assertEqual(self.management.customers,{},msg"remove_customer Method Invalid")
+        self.assertEqual(self.management.customers,[],msg"remove_customer Method Invalid")
