@@ -101,5 +101,13 @@ class LoginTest(unittest.TestCase):
         self.assertEqual(self.steve.shopping_lists["grosseries"],updated_grosseries,
         msg="update_shopping_list_method_inaccurate")
 
+    def test_show_shopping_list_item(self):
+        """tests show items feature on customer object"""
+        grosseries = {"oranges":[5,200],"mangoes":[6,1000]}
+        self.steve.create_shopping_list("grosseries",grosseries)
+        grosseries_list = {"grosseries",grosseries}
+        self.assertEqual(self.steve.show_shopping_list("grosseries"),grosseries_list,
+        msg="show_grosseries() Method Inaccurate")
 
+        
     
