@@ -14,7 +14,7 @@ class InValidPasswordExcpetion(Exception):
     """
     pass
 
-class LogIn():
+class Customer():
     """
     Shopping List login class
     Created on 16/08/2017 by Isaac Ssekamatte
@@ -24,6 +24,8 @@ class LogIn():
         self.email = email
         self.password = password
         self.online_data = {("steve@steve.com","qwerty"),("isaac@isaac.com","123456i")}
+        self.login_status = False
+        self.shopping_lists = {}
             
     def login(self):
         
@@ -39,7 +41,7 @@ class LogIn():
             raise InValidPasswordExcpetion('Password must be atleast six \'6\' characters long')
 
         email_password = self.email,self.password
-        return email_password in self.online_data
+        self.login_status = email_password in self.online_data
 
     def validate_email(self):
         """
@@ -55,3 +57,35 @@ class LogIn():
         """
         password = str(self.password)
         return len(password) >= 6
+
+    def create_shopping_list(self, name_shopping_list,shopping_list):
+        """
+        creates shopping list using from items list passed in and 
+        the shopping list name
+        """
+        self.shopping_lists[str(name_shopping_list)] = shopping_list
+
+    def remove_shopping_list(self,name_shopping_list):
+        """
+        removes shopping list from collection of shopping lists
+        """
+        self.shopping_lists.pop(name_shopping_list, None)
+
+    def update_shopping_list(self,name_shopping_list,update_list):
+        """
+        updates shopping list in pool of shopping lists
+        """
+        self.shopping_lists[name_shopping_list] = update_list
+
+    def show_shopping_list(self,name_shopping_list):
+        """
+        returns list of values of shopping list to display
+        """
+
+        return [name_shopping_list,self.shopping_lists[name_shopping_list]]
+
+    def logout(self):
+        """
+        changes customer login status
+        """
+        self.login_status = False

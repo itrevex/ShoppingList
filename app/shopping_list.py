@@ -19,7 +19,7 @@ class ShoppingList():
         self.total_amount = 0
         self.items = {}
     
-    def add_item(self,item_name, number_of_items,cost_per_item):
+    def create_item(self,item_name, number_of_items,cost_per_item):
         """ 
         Add item to shopping list
         item_name  is the name of the item you wnat to to shopping list
@@ -86,3 +86,28 @@ class ShoppingList():
     
         number_of_items = self.items[item_name][0]
         return [item_name,number_of_items,number_of_items*self.items[item_name][1]]
+    
+    def add_item(self,item_name,number_items_on_item):
+        
+        """
+        Add item to shopping list
+        add item `item_name` to the items __dict__
+        updates the total_amount
+        add the number_items_on_item specified from the total items pool
+        """
+        
+        if not isinstance(item_name, str) or not item_name:
+            raise TypeError("Item Name Should Be A Word")
+        
+        if not item_name.strip():
+            raise TypeError("Item Name Should Be A Word")
+
+        if item_name not in self.items:
+            raise ItemNotInListException('Item You Are Trying To Remove Is Not In Shopping List')
+        
+        self.total_amount += self.items[item_name][1]*number_items_on_item
+        
+        
+        new_items = self.items[item_name][0] + number_items_on_item
+        cost_of_item = self.items[item_name][1]
+        self.items[item_name] = [new_items,cost_of_item]
