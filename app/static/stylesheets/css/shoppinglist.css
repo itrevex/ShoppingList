@@ -106,7 +106,11 @@ body{
 #icon_one{
     margin-left: 50px;
 }
-#icon_two{
-    margin-left: 5px;
-    margin-right: 20px;
+#main_list_item{
+    display: inline;
 }
+#list_button{
+    display: block;
+    float: right;
+}
+

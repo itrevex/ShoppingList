@@ -11,8 +11,8 @@
 
         <title>Shopping Home Page</title>
         <!-- Bootstrap -->
-        <link rel="stylesheet" type="text/css" href="stylesheets/css/3.5.5/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="stylesheets/css/shoppinglist.css">
+        <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename = "stylesheets/css/3.5.5/bootstrap.css")}}">
+        <link rel="stylesheet" type="text/css" href= "{{ url_for ('static', filename="stylesheets/css/shoppinglist.css" )}}">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements andmedia queries -->
         <!-- WARNING: Respond.js doesn't work if you view the pagevia file:// -->
         <!--[if lt IE 9]>
@@ -20,13 +20,18 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
     </head>
-
+   
     <body>
         <div class="container">
             <div class="jumbotron">
-                <img src="images/shopping_list_logo.png" id = "shoppinglist_logo_small" alt="Shopping List Logo"></img>
+                <img src={{url_for('static',filename='images/shopping_list_logo.png')}} id = "shoppinglist_logo_small" alt="Shopping List Logo"></img>
                 <span id="bl_title">Shopping List App</span>
                 <p id="bl_slogan">Keep Track of Your Shopping Items</p>
+                {% if name %}
+                    <h3 align="right", id="bl_slogan">Welcome, {{name}}<h3>
+                {% else %}
+                    <h3 align="right", id="bl_slogan">Please Login<h3>
+                {% endif %}
             </div>
 
             <p id="main_topRightButtons" align="right">
@@ -42,39 +47,18 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="well well-sm">
+                        <div class="well well-lg">
                             <!-- to be put in some sort of loop -->
                             <p>
-                                <p id="main_list_item">
-                                    Shopping List 1
-                                    <span class="glyphicon glyphicon-pencil" id="icon_one"></span>
-                                    <span class="glyphicon glyphicon-trash" id="icon_two"></span>
-                                    <span class="glyphicon glyphicon-menu-right"></span>
-                                </p>
-                                <p id="main_list_item">
-                                    Shopping List 2
-                                    <span class="glyphicon glyphicon-pencil" id="icon_one"></span>
-                                    <span class="glyphicon glyphicon-trash" id="icon_two"></span>
-                                    <span class="glyphicon glyphicon-menu-right"></span>
-                                </p>
-                                <p id="main_list_item">
-                                    Shopping List 3
-                                    <span class="glyphicon glyphicon-pencil" id="icon_one"></span>
-                                    <span class="glyphicon glyphicon-trash" id="icon_two"></span>
-                                    <span class="glyphicon glyphicon-menu-right"></span>
-                                </p>
-                                <p id="main_list_item">
-                                    Shopping List 4
-                                    <span class="glyphicon glyphicon-pencil" id="icon_one"></span>
-                                    <span class="glyphicon glyphicon-trash" id="icon_two"></span>
-                                    <span class="glyphicon glyphicon-menu-right"></span>
-                                </p>
-                                <p id="main_list_item">
-                                    Shopping List 5
-                                    <span class="glyphicon glyphicon-pencil" id="icon_one"></span>
-                                    <span class="glyphicon glyphicon-trash" id="icon_two"></span>
-                                    <span class="glyphicon glyphicon-menu-right"></span>
-                                </p>
+                                    <a class="btn btn-primary btn-xs" id="list_button">Update</a>
+                                    <a class="btn btn-danger btn-xs" id="list_button">Delete</a>
+                                    <a class="btn btn-info btn-xs" id="list_button">Items</a>
+                               
+                                {% for item in shopping_list %}
+                                    <div class=container id="main_list_item">
+                                       {{ item }} 
+                                    </div>
+                                {% endfor %}
                             </p>
                         </div>
                         
@@ -104,12 +88,10 @@
             </p><br>
         </div>
 
-
-        
-
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://code.jquery.com/jquery.js"></script>
         <!-- Include all compiled plugins (below), or include individualfiles as needed -->
-        <script src="js/bootstrap.min.js"></script>
+        <script src= "{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
     </body>
 </html>
+
