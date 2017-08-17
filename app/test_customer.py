@@ -76,7 +76,7 @@ class LoginTest(unittest.TestCase):
     def test_create_shopping_list(self):
         """Check validity of create shopping list method"""
         shopping_list = {"oranges":[5,200],"mangoes":[6,1000]}
-        self.steve.create_shopping_list("grosseries",items)
+        self.steve.create_shopping_list("grosseries",shopping_list)
         self.assertEqual(self.steve.shopping_lists['grosseries'],
         shopping_list,msg="Create Shopping List Method Inaccurate")
 

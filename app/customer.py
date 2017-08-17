@@ -82,7 +82,7 @@ class Customer():
         returns list of values of shopping list to display
         """
 
-        return self.shopping_lists[name_shopping_list]
+        return [name_shopping_list,self.shopping_lists[name_shopping_list]]
 
     def logout(self):
         """
