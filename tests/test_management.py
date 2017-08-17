@@ -4,7 +4,7 @@ Unittest class for testing management class
 """
 
 import unittest
-from management import Management, InValidEmailExcpetion, InValidPasswordExcpetion
+from ..app.management import Management, InValidEmailExcpetion, InValidPasswordExcpetion
 
 class ManagementTest(unittest.TestCase):
     
@@ -26,8 +26,7 @@ class ManagementTest(unittest.TestCase):
     
     def test_remove_customer(self):
         """Test remove_customer method"""
-
         customer=Customer("email","password")
         self.management.add_customer(customer)
         self.management.remove_customer(customer)
-        self.assertEqual(self.management.customers,[],msg"remove_customer Method Invalid")
+        self.assertEqual(self.management.customers,[],msg="remove_customer Method Invalid")

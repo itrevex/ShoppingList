@@ -4,7 +4,7 @@ Unittest class for testing login class instance
 """
 
 import unittest
-from customer import Customer, InValidEmailExcpetion, InValidPasswordExcpetion
+from ..app.customer import Customer, InValidEmailExcpetion, InValidPasswordExcpetion
 
 class LoginTest(unittest.TestCase):
     
