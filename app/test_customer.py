@@ -4,7 +4,7 @@ Unittest class for testing login class instance
 """
 
 import unittest
-from login import LogIn, InValidEmailExcpetion, InValidPasswordExcpetion
+from customer import Customer, InValidEmailExcpetion, InValidPasswordExcpetion
 
 class LoginTest(unittest.TestCase):
     
@@ -13,17 +13,24 @@ class LoginTest(unittest.TestCase):
     """
 
     def setUp(self):
-        self.isaac_ssekamattte = LogIn("isaac@isaac.com","123456i")
-        self.steve = LogIn("steve@steve.com","qwerty")
-        self.invalid_email= LogIn("6rrrrer","123421")
-        self.invalid_password= LogIn("steve@steve.com","133")
+        self.isaac_ssekamattte = Customer("isaac@isaac.com","123456i")
+        self.steve = Customer("steve@steve.com","qwerty")
+        self.invalid_email= Customer("6rrrrer","123421")
+        self.invalid_password= Customer("steve@steve.com","133")
     
+    def test_shopping_lists_init_value(self):
+        """tests if shopping list starts empty"""
+        self.assertEqual(self.steve.shopping_lists, {},msg={"New Customer Shopping List Not Empty"})
+    
+    def test_login_status_init(self):
+        """tests if customer starts loged out"""
+        self.assertFalse(self.steve.login_status,msg="Customer Logged In before SignIn")
     def test_constructor_email(self):
         """
         Test initial string passed in as email to Login Constructor
         """
         self.assertEqual(self.isaac_ssekamattte.email,"isaac@isaac.com","__init__ method inaccurate")
-
+    
     def test_constructor_password(self):
         """
         Test initial string passed in as password to Login Constructor
@@ -68,7 +75,31 @@ class LoginTest(unittest.TestCase):
 
     def test_create_shopping_list(self):
         """Check validity of create shopping list method"""
-        shopping_list_1 = ShoppingList()
-        self.steve.create_shopping_list(shopping_list_1)
-        self.assertEqual(self.steve.shopping_list,shopping_list_1,msg="Create Shopping List Method Incorrect")
+        shopping_list = {"oranges":[5,200],"mangoes":[6,1000]}
+        self.steve.create_shopping_list("grosseries",items)
+        self.assertEqual(self.steve.shopping_lists['grosseries'],
+        shopping_list,msg="Create Shopping List Method Inaccurate")
 
+    def test_remove_shopping_list(self):
+        """Checks if remove_shopping_list() method is function well"""
+        grosseries = {"oranges":[5,200],"mangoes":[6,1000]}
+        toilatories = {"bathing_soap":[1,5000],"toothpaster":[2,4500],"vaseline":[1,2500]}
+        self.steve.create_shopping_list("grosseries",grosseries)
+        self.steve.create_shopping_list("toilatories",toilatories)
+        self.steve.remove_shopping_list("grosseries")
+        shopping_lists = {"toilatories":toilatories}
+        self.assertEqual(self.steve.shopping_lists,shopping_lists,
+        msg="remove_shopping_list Method Inaccurate")
+
+
+    def test_update_shopping_list(self):
+        """tests if update shopping_list Method is accurate"""
+        grosseries = {"oranges":[5,200],"mangoes":[6,1000]}
+        self.steve.create_shopping_list("grosseries",grosseries)
+        updated_grosseries = {"oranges":[5,200],"mangoes":[6,1000],"pees":[5,4000]}
+        self.steve.test_update_shopping_list("grosseries",updated_grosseries)
+        self.assertEqual(self.steve.shopping_lists["grosseries"],updated_grosseries,
+        msg="update_shopping_list_method_inaccurate")
+
+
+    
