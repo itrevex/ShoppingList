@@ -93,7 +93,9 @@ class LoginTest(unittest.TestCase):
 
 
     def test_update_shopping_list(self):
-        """tests if update shopping_list Method is accurate"""
+        """
+        tests if update shopping_list Method is accurate
+        """
         grosseries = {"oranges":[5,200],"mangoes":[6,1000]}
         self.steve.create_shopping_list("grosseries",grosseries)
         updated_grosseries = {"oranges":[5,200],"mangoes":[6,1000],"pees":[5,4000]}
