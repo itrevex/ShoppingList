@@ -2,16 +2,15 @@
 Script used for rendering views onto the browser
 """
 from flask import Flask, request, render_template, redirect, url_for
-from customer import Customer, InValidEmailExcpetion, InValidPasswordExcpetion
-from shopping_list import ShoppingList
+from .customer import Customer, InValidEmailExcpetion, InValidPasswordExcpetion
+from .shopping_list import ShoppingList
+from app import APP
 
-app = Flask(__name__)
-
-@app.route('/')
+@APP.route('/')
 def index():
     return "Request Method: %s" % request.method
 
-@app.route('/login', methods=['GET', 'POST'])
+@APP.route('/login', methods=['GET', 'POST'])
 def login(login_fail=None):
     """
     Method for Linking template and authetication code to 
@@ -42,7 +41,7 @@ def login(login_fail=None):
     return render_template('login.html', login_fail=login_fail)
     
 
-@app.route('/home/<user_name>')
+@APP.route('/home/<user_name>')
 def home(user_name=None):
     """
     Function opens home page
@@ -53,18 +52,11 @@ def home(user_name=None):
     return render_template("home.html", name = user_name, i = 1,
     shopping_list = shopping_list)
 
-@app.route('/register')
+@APP.route('/register')
 def register():
     """
     Opens registeration page
     """
     return render_template('register.html')
-
-if __name__=="__main__":
-    
-    """
-    start app only through main
-    """
-    app.run(debug=True)
 
     

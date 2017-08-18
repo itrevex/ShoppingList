@@ -1,3 +1,8 @@
 #!flask/bin/python
-from app_flask import app_flask
-app_flask.run(debug=True)
+from app import APP
+
+if __name__=="__main__":
+    """
+    start app only through main
+    """
+    APP.run(debug=True)
