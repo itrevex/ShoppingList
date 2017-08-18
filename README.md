@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/itrevex/ShoppingList.svg?branch=master)](https://travis-ci.org/itrevex/ShoppingList)
 
 # SHOPPING LIST APP
-This helps users keep track of their ideas. They can * Create *, * Read *, * Update * and * Delete * Shopping lists
+This helps users keep track of their ideas. They can *Create*, * ead*, *Update* and *Delete* Shopping lists
 
 ## LANGUANGE AND HELPER TOOLS
 1. Python - Main Application
