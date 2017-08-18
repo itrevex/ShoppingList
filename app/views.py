@@ -2,9 +2,11 @@
 Script used for rendering views onto the browser
 """
 from flask import Flask, request, render_template, redirect, url_for
-from .customer import Customer, InValidEmailExcpetion, InValidPasswordExcpetion
-from .shopping_list import ShoppingList
-from app import APP
+from customer import Customer, InValidEmailExcpetion, InValidPasswordExcpetion
+from shopping_list import ShoppingList
+
+APP = Flask(__name__)
+APP.config['DEBUG'] = False
 
 @APP.route('/')
 def index():
@@ -58,5 +60,11 @@ def register():
     Opens registeration page
     """
     return render_template('register.html')
+
+if __name__=="__main__":
+    """
+    start app only through main
+    """
+    APP.run(debug=True)
 
     
