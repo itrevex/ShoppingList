@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/itrevex/ShoppingList.svg?branch=master)](https://travis-ci.org/itrevex/ShoppingList)
+[![Coverage Status](https://coveralls.io/repos/github/itrevex/ShoppingList/badge.svg)](https://coveralls.io/github/itrevex/ShoppingList)
 
 # SHOPPING LIST APP
 This helps users keep track of their ideas. They can *Create*, *Read*, *Update* and *Delete* Shopping lists
